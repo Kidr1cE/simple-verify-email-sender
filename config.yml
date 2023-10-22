@@ -1,0 +1,10 @@
+verify-email:
+  auth:
+    addr: smtp.163.com:25
+    username: alco89963@163.com
+    password: VBARJVXGVBJYBLJR
+  content:
+    name: Alco
+    subject: Verify Email
+    path: ./email.html
+  
