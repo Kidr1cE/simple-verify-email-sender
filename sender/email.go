@@ -1,4 +1,4 @@
-package verify
+package sender
 
 import (
 	"email_verify/sender/utils"
@@ -18,7 +18,7 @@ type VerifyEmailSender struct {
 func (sender *VerifyEmailSender) ReadConfig(config *VerifyEmailConfig) error {
 	auth := config.Auth
 	pool, err := email.NewPool(
-		"smtp.gmail.com:587",
+		config.Address,
 		4,
 		smtp.PlainAuth("", auth.Username, auth.Password, auth.Host),
 	)

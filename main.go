@@ -1,12 +1,21 @@
 package main
 
-import "email_verify/verify"
+import (
+	verify "email_verify/sender"
+	"fmt"
+)
 
 func main() {
-	config, err := verify.LoadEmailConfig("./config.yml")
+	config, err := verify.LoadConfig("./config.yml")
 	if err != nil {
-		return
+		fmt.Println(err)
 	}
-	email := verify.NewVerifyEmail(config)
-	email.Send([]string{"2890034671@qq.com"})
+	fmt.Println(config.Address)
+	fmt.Println(config.Auth.Host)
+	var sender verify.VerifyEmailSender
+
+	err = sender.ReadConfig(config)
+	if err != nil {
+		fmt.Println(err)
+	}
 }
