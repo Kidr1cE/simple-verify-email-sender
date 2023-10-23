@@ -12,7 +12,13 @@ import (
 type VerifyEmailSender struct {
 	Email    string
 	Template *Template
+	HTMLPath string
 	Pool     *email.Pool
+}
+
+func (sender *VerifyEmailSender) SetTemplate(path string) error {
+
+	return nil
 }
 
 func (sender *VerifyEmailSender) ReadConfig(config *VerifyEmailConfig) error {

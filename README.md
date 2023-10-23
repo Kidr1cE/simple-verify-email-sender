@@ -9,7 +9,7 @@ address: smtp.163.com:25
 auth:
   host: smtp.163.com
   username: xxx@163.com
-  password: pass
+  password: PASSWORD
 verify:
   type: token #token/code
 template:
