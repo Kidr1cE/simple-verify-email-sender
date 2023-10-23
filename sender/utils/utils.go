@@ -17,6 +17,7 @@ func GetTemplate(text string) (*template.Template, error) {
 	}
 	return tmpl, nil
 }
+
 func GetContent(tmpl *template.Template, table []string) []byte {
 	var buf bytes.Buffer
 	tmpl.Execute(&buf, table)

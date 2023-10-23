@@ -18,5 +18,5 @@ func main() {
 	if err != nil {
 		fmt.Println(err)
 	}
-	sender.SendTo()
+	sender.SendTo("2890034671@qq.com", "https://yourwebsite/verity/?token=114514")
 }
