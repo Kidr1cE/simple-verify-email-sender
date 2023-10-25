@@ -8,27 +8,30 @@
 address: smtp.163.com:25
 auth:
   host: smtp.163.com
-  username: xxx@163.com
-  password: PASSWORD
+  username: xxx@163.com # Your email addr
+  password:  # Your SMTP password
 verify:
-  type: token #token/code
+  type: token # token/code
 template:
-  name: Alco
+  name: # Your name
   subject: Verify Email
 ```
 3. 编写自定义HTML邮件(可选)
 4. 使用
 ```go
 func main() {
-	config, err := verify.LoadConfig("./config.yml")
-	if err != nil {
-		return 
-	}
-	var sender verify.VerifyEmailSender
+	// read config
+	file, err := os.ReadFile("./config.yml")
+	config, err := verify.LoadConfig(file)
 
+	// inint email sender
+	var sender verify.VerifyEmailSender
 	err = sender.ReadConfig(config)
 	if err != nil {
-		return
+		fmt.Println(err)
 	}
+
+	// send email
+	sender.SendTo("784312513@qq.com", "https://yourwebsite/verity/?token=114514")
 }
 ```
