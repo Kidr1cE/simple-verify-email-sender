@@ -3,20 +3,21 @@ package main
 import (
 	verify "email_verify/sender"
 	"fmt"
+	"os"
 )
 
 func main() {
-	config, err := verify.LoadConfig("./config.yml")
-	if err != nil {
-		fmt.Println(err)
-	}
-	fmt.Println(config.Address)
-	fmt.Println(config.Auth.Host)
-	var sender verify.VerifyEmailSender
+	// read config
+	file, err := os.ReadFile("./config.yml")
+	config, err := verify.LoadConfig(file)
 
+	// inint email sender
+	var sender verify.VerifyEmailSender
 	err = sender.ReadConfig(config)
 	if err != nil {
 		fmt.Println(err)
 	}
-	sender.SendTo("2890034671@qq.com", "https://yourwebsite/verity/?token=114514")
+
+	// send email
+	sender.SendTo("784312513@qq.com", "https://yourwebsite/verity/?token=114514")
 }

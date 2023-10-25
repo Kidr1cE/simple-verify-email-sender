@@ -1,8 +1,6 @@
 package sender
 
 import (
-	"os"
-
 	"gopkg.in/yaml.v2"
 )
 
@@ -28,14 +26,9 @@ type VerifyEmailConfig struct {
 	Template *Template `yaml:"template"`
 }
 
-func LoadConfig(filename string) (*VerifyEmailConfig, error) {
-	bytes, err := os.ReadFile(filename)
-	if err != nil {
-		return nil, err
-	}
-
+func LoadConfig(file []byte) (*VerifyEmailConfig, error) {
 	var config VerifyEmailConfig
-	err = yaml.Unmarshal(bytes, &config)
+	err := yaml.Unmarshal(file, &config)
 	if err != nil {
 		return nil, err
 	}

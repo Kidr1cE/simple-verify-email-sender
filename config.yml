@@ -1,8 +1,8 @@
 address: smtp.163.com:25
 auth:
   host: smtp.163.com
-  username: alco89963@163.com
-  password: PASSWORD
+  username: alco89963@163.com # Your email addr
+  password: NOXDDSGDBWVVWCLZ # Your SMTP password
 verify:
   type: token #token/code
 template:
